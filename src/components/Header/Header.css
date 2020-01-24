@@ -1,0 +1,26 @@
+.Header{
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+  padding: 20px;
+}
+
+.Header h3>a{
+  color: #282c34;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.HeaderNav li{
+  display: inline-block;
+  list-style: none;
+  padding: 15px;
+}
+
+.HeaderNav a{
+  color: dodgerblue;
+  text-decoration: none;
+}

@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Switch, Route} from "react-router-dom";
+
+import Layout from "./components/Layout/Layout";
+import MainPage from "./containers/MainPage/MainPage";
+import DishesPage from "./containers/DishesPage/DishesPage";
+import CreateDishPage from "./containers/CreateDishPage/CreateDishPage";
+import EditDishesPage from "./containers/EditDishesPage/EditDishesPage";
+import OrdersPage from "./containers/OrdersPage/OrdersPage";
+
 import './App.css';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Switch>
+        <Route path='/' exact component={MainPage} />
+        <Route path='/dishes' exact component={DishesPage} />
+        <Route path='/dishes/create' exact component={CreateDishPage} />
+        <Route path='/dishes/edit/:id' component={EditDishesPage} />
+        <Route path='/orders' exact component={OrdersPage} />
+        <Route render={() => <h2>PAGE NOT FOUND</h2>} />
+      </Switch>
+    </Layout>
   );
-}
+};
 
 export default App;
