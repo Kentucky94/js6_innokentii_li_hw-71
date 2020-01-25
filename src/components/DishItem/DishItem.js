@@ -2,9 +2,10 @@ import React from 'react';
 
 import {deleteDish} from "../../store/actions";
 import {connect} from "react-redux";
+import {withRouter} from "react-router";
 
 import './DishItem.css';
-import {withRouter} from "react-router";
+
 
 
 

@@ -11,13 +11,13 @@ class DishesPage extends Component {
     this.props.history.push('/dishes/create');
   };
 
-  componentDidMount() {
-    this.props.initDishes();
+  async componentDidMount() {
+    await this.props.initDishes();
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  async componentDidUpdate(prevProps, prevState, snapshot) {
     if(this.props.dishes.length !== prevProps.dishes.length){
-      this.props.initDishes();
+      await this.props.initDishes();
       console.log('Updated');
     }
   }

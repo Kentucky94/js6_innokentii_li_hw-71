@@ -12,7 +12,6 @@ class EditDishesPage extends Component {
 
   componentDidMount() {
     if(this.props.location.dishData){
-      console.log(this.props);
 
       this.setState({
         title: this.props.location.dishData.title,
