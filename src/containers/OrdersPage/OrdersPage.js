@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {getOrders} from "../../store/actions";
+import {getOrders, initAllDishes} from "../../store/actions";
 import {connect} from "react-redux";
 import OrderItem from "../../components/OrderItem/OrderItem";
 
 class OrdersPage extends Component {
   async componentDidMount() {
+    await this.props.initDishes();
     await this.props.getOrders();
     console.log(this.props.orders);
   }
@@ -25,7 +26,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getOrders: () => dispatch(getOrders())
+  getOrders: () => dispatch(getOrders()),
+  initDishes: () => dispatch(initAllDishes())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrdersPage);

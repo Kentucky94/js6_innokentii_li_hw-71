@@ -16,6 +16,10 @@ export const EDIT_DISH_REQUEST = 'EDIT_DISH_REQUEST';
 export const EDIT_DISH_SUCCESS = 'EDIT_DISH_SUCCESS';
 export const EDIT_DISH_FAILURE = 'EDIT_DISH_FAILURE';
 
+export const GET_DISH_DATA_REQUEST = 'GET_DISH_DATA_REQUEST';
+export const GET_DISH_DATA_SUCCESS = 'GET_DISH_DATA_SUCCESS';
+export const GET_DISH_DATA_FAILURE = 'GET_DISH_DATA_FAILURE';
+
 export const GET_ALL_ORDERS_REQUEST = 'GET_ALL_ORDERS_REQUEST';
 export const GET_ALL_ORDERS_SUCCESS = 'GET_ALL_ORDERS_SUCCESS';
 export const GET_ALL_ORDERS_FAILURE = 'GET_ALL_ORDERS_FAILURE';
@@ -35,6 +39,10 @@ export const deleteDishFailure = (error) => ({type: DELETE_DISH_FAILURE, error})
 export const editDishRequest = () => ({type: EDIT_DISH_REQUEST});
 export const editDishSuccess = (id) => ({type: EDIT_DISH_SUCCESS, id});
 export const editDishFailure = (error) => ({type: EDIT_DISH_FAILURE, error});
+
+export const getDishDataRequest = () => ({type: GET_DISH_DATA_REQUEST});
+export const getDishDataSuccess = (data) => ({type: GET_DISH_DATA_SUCCESS, data});
+export const getDishDataFailure = (error) => ({type: GET_DISH_DATA_FAILURE, error});
 
 export const getAllOrdersRequest = () => ({type: GET_ALL_ORDERS_REQUEST});
 export const getAllOrdersSuccess = (data) => ({type: GET_ALL_ORDERS_SUCCESS, data});
@@ -99,6 +107,18 @@ export const getOrders = () => {
       dispatch(getAllOrdersSuccess(response.data));
     }catch(e){
       dispatch(getAllOrdersFailure(e));
+    }
+  }
+};
+
+export const getDishData = (id) => {
+  return async dispatch => {
+    try{
+      dispatch(getDishDataRequest());
+      const response = await axiosOrders.get(`/dishes/${id}.json`);
+      dispatch(getDishDataSuccess(response.data));
+    }catch(e){
+      dispatch(getDishDataFailure(e));
     }
   }
 };

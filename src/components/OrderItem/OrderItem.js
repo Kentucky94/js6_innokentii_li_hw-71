@@ -2,15 +2,20 @@ import React from 'react';
 import {connect} from "react-redux";
 
 import './OrderItem.css';
+import {getDishData} from "../../store/actions";
 
 const OrderItem = props => {
+  const getDish = async (id) => {
+    await props.getDishData(id);
+  };
+
   return (
     <div className='OrderItem'>
       <div>
-        <p>Delivery: {props.deliveryPrice}</p>
+
       </div>
       <div>
-
+        <p>Delivery: {props.deliveryPrice}</p>
       </div>
     </div>
   );
@@ -18,9 +23,15 @@ const OrderItem = props => {
 
 const mapStateToProps = state => {
   return {
-    dishes: state.dishes,
     deliveryPrice: state.deliveryPrice,
+    currentDishData: state.currentDishData,
   }
 };
 
-export default connect(mapStateToProps)(OrderItem);
+const mapDispatchToProps = dispatch => {
+  return {
+    getDishData: (id) => dispatch(getDishData(id))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderItem);

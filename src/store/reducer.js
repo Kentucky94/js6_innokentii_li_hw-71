@@ -1,9 +1,10 @@
-import {GET_ALL_ORDERS_SUCCESS, INIT_ALL_DISHES_SUCCESS} from "./actions";
+import {GET_ALL_ORDERS_SUCCESS, GET_DISH_DATA_SUCCESS, INIT_ALL_DISHES_SUCCESS} from "./actions";
 
 const initialState = {
   dishes: [],
   orders: [],
   deliveryPrice: 150,
+  currentDishData: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         orders
+      };
+    case GET_DISH_DATA_SUCCESS:
+      return {
+        ...state,
+        currentDishData: action.data,
       };
     default:
       return state
